@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(echo \"Frontend PID: $!\")",
+      "Read(//private/tmp/**)",
+      "Bash(pkill -f \"uvicorn main:app\")",
+      "Bash(curl -s http://localhost:8000/health)",
+      "Bash(curl -s http://localhost:3000 -o /dev/null -w \"Frontend HTTP status: %{http_code}\\\\n\")"
+    ]
+  }
+}
