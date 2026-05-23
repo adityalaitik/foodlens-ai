@@ -8,11 +8,11 @@ router = APIRouter()
 
 
 @router.post("/ask", response_model=FoodAnalysis)
-def ask_dish(request: AskDishRequest):
+async def ask_dish(request: AskDishRequest):
     try:
-        return handle_ask(request)
+        return await handle_ask(request)
     except Exception as e:
         msg = str(e)
-        if 'RESOURCE_EXHAUSTED' in msg or '429' in msg:
+        if "RESOURCE_EXHAUSTED" in msg or "429" in msg:
             raise HTTPException(status_code=429, detail=msg)
         raise HTTPException(status_code=500, detail=msg)
